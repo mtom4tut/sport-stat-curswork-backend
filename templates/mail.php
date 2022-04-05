@@ -16,6 +16,7 @@
     }
 
     small {
+      display: block;
       margin-top: 50px;
     }
   </style>

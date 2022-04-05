@@ -2,35 +2,43 @@
 // Подключение бд
 include_once("./config/init.php");
 
+// Константы
+include_once("./config/const.php");
+
 // Подключение функций
 include_once("./functions/helpers.php");
 
 // Подключение библиотек
 include_once('./vendor/autoload.php');
 
-if (isset($_POST['mail'])) {
+// if (isset($_POST['mail'])) {
   // Создание транспорта
-  $transport = (new Swift_SmtpTransport('smtp.mail.ru', 465, 'ssl'))
-    ->setUsername('junepc20@mail.ru')
-    ->setPassword('tE0kg3GS04yY9qRXAcGQ');
+  $transport = (new Swift_SmtpTransport($SMTP_HOST, 465, 'ssl'))
+    ->setUsername($MAIL)
+    ->setPassword($MAIL_TOKEN);
 
   // Создание почтовой программы, используя созданный транспорт
   $mailer = new Swift_Mailer($transport);
 
-  $code = mt_rand(100000, 999999);
-
-  $_SESSION['code'] = $code;
+  $_SESSION['code'] = mt_rand(100000, 999999);
 
   // Создание шаблона
-  $msg_content = include_template('mail.php', ['code' => $code]);
+  $msg_content = include_template('mail.php', ['code' => $_SESSION['code']]);
 
-  $message = (new Swift_Message('Подтверждение регистрации «Sport Stat»'))
-    ->setFrom(['junepc20@mail.ru' => 'Sport Stat']) // отправитель
-    ->setTo($_POST['mail']) // получатель
-    ->setBody($msg_content, 'text/html');
+  // $message = (new Swift_Message('Подтверждение регистрации «Sport Stat»'))
+  //   ->setFrom([$MAIL => 'Sport Stat']) // отправитель
+  //   ->setTo($_POST['mail']) // получатель
+  //   ->setBody($msg_content, 'text/html');
 
-  $result = $mailer->send($message); // отправляем письмо
+  // $result = $mailer->send($message); // отправляем письмо
 
-  echo $result;
-}
+  // if ($result) {
+    $_SESSION['mail'] = $_POST['mail'];
+    $_SESSION['code_count'] = 0;
+//   } else {
+//     echo 'Ошибка, не удалось отправит письмо с кодом для подтверждения!';
+//   }
+// } else {
+//   echo 'Ошибка, не удалось обработать данные!';
+// }
 exit();

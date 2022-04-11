@@ -5,7 +5,7 @@ include_once("./config/init.php");
 $CODE_LIMIT = 4;
 
 if (isset($_POST['code']) && isset($_POST['mail'])) {
-  if ($_POST['code'] !== $_SESSION['code']) {
+  if ((int)$_POST['code'] !== $_SESSION['code']) {
     $_SESSION['code_count'] = $_SESSION['code_count'] + 1;
 
     if ($_SESSION['code_count'] >= $CODE_LIMIT) {
@@ -16,8 +16,8 @@ if (isset($_POST['code']) && isset($_POST['mail'])) {
       echo 'Осталось попыток ввода: ' . $dif;
     }
   } else {
-    if ($_POST['mail'] === $_SESSION['mail']) {
-      echo 'Ошибка, не удалось обработать данные!';
+    if ($_POST['mail'] !== $_SESSION['mail']) {
+      echo 'Почта, не соответствует почте отправления!';
     }
   }
 } else {

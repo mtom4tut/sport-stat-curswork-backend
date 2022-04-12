@@ -138,3 +138,22 @@ function is_correct_length($name, $min, $max)
   $len = strlen(trim($_POST[$name]));
   return $min < $len && $len < $max;
 }
+
+/**
+ * Функция для проверки валидности email
+ *
+ * @param mysqli $link mysqli Ресурс соединения
+ *
+ * @return string строка с текстом ошибки
+ */
+function validEmail($link, $mail)
+{
+  if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+    return "Не верный e-mail адрес";
+  }
+
+  $sql = "SELECT id FROM users WHERE mail = ?";
+  if (isset(db_fetch_data($link, $sql, [$mail])[0])) {
+    return "Пользователь с этим e-mail уже зарегистрирован";
+  }
+}

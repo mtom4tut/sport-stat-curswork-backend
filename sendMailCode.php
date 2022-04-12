@@ -12,6 +12,13 @@ include_once("./functions/helpers.php");
 include_once('./vendor/autoload.php');
 
 if (isset($_POST['mail'])) {
+  $err = validEmail($link, $_POST['mail']);
+
+  if ($err) {
+    echo $err;
+    exit();
+  }
+
   // Создание транспорта
   $transport = (new Swift_SmtpTransport($SMTP_HOST, 465, 'ssl'))
     ->setUsername($MAIL)

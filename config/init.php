@@ -10,7 +10,7 @@ session_id('ht0vfqodo72ldi9i1sqp7sdlblud11n2');
 session_start();
 
 // Подключение бд
-$link = mysqli_connect("localhost", "root", "root", "coursework"); // подключение к бд в OpenServer
+$link = mysqli_connect("localhost", "root", "root", "sport_stat_coursework"); // подключение к бд в OpenServer
 
 if (!$link) { // проверка соединения
   die("Ошибка соединения: " . mysqli_connect_error());

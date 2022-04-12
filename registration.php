@@ -30,13 +30,17 @@ if (isset($_POST['mail']) && isset($_POST['code']) && isset($_POST['password']) 
   }
 
   $sql = "INSERT INTO users SET mail = ?, password = ?";
-  $data = [$_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT)];
+  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+  $data = [$_POST["mail"], $password];
   $res = db_insert_data($link, $sql, $data);
 
   if ($res) {
     unset($_SESSION['mail']);
     unset($_SESSION['code']);
     unset($_SESSION['code_count']);
+
+    $data = ['mail' => $_POST["mail"], 'password' => $password];
+    echo json_encode($data);
   }
 }
 exit();

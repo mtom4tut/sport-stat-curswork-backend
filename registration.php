@@ -12,6 +12,9 @@ include_once("./functions/helpers.php");
 include_once('./vendor/autoload.php');
 
 if (isset($_POST['mail']) && isset($_POST['code']) && isset($_POST['password']) && isset($_POST['passwordCheck'])) {
+  session_id($_SERVER['HTTP_X_CSRF_TOKEN']);
+  session_start();
+
   $err = validEmail($link, $_POST['mail']);
 
   if ($err) {
@@ -39,8 +42,7 @@ if (isset($_POST['mail']) && isset($_POST['code']) && isset($_POST['password']) 
     unset($_SESSION['code']);
     unset($_SESSION['code_count']);
 
-    $data = ['mail' => $_POST["mail"], 'password' => $password];
-    echo json_encode($data);
+    $_SESSION['user_id'] = $res;
   }
 }
 exit();

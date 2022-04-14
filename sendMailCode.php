@@ -12,6 +12,9 @@ include_once("./functions/helpers.php");
 include_once('./vendor/autoload.php');
 
 if (isset($_POST['mail'])) {
+  session_id($_SERVER['HTTP_X_CSRF_TOKEN']);
+  session_start();
+
   $err = validEmail($link, $_POST['mail']);
 
   if ($err) {

@@ -14,3 +14,6 @@ if (!$link) { // проверка соединения
 
 $_POST = json_decode(file_get_contents("php://input"), true);
 mysqli_set_charset($link, "utf8"); // установка кодировки
+
+session_id($_SERVER['HTTP_X_CSRF_TOKEN']);
+session_start();

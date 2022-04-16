@@ -13,8 +13,8 @@ if (!$res) {
 } else {
   $arr = [];
 
-  foreach ($res[0] as $value) {
-    $arr[] = $value;
+  foreach ($res as $value) {
+    $arr[] = $value['spreadsheet'];
   }
 
   echo json_encode($arr);

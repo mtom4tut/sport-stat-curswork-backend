@@ -9,7 +9,7 @@ $sql = "SELECT spreadsheet FROM spreadsheets WHERE id_user = ?";
 $res = db_fetch_data($link, $sql, [$_SESSION['id_user']]);
 
 if (!$res) {
-  echo 'Не удалось добавить таблицу';
+  echo 'Не удалось получить дынные';
 } else {
   $arr = [];
 

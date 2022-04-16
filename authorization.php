@@ -19,7 +19,7 @@ if (isset($_POST['password']) && isset($_POST['mail'])) {
     exit();
   }
 
-  $_SESSION['user_id'] = $pass[0]['id'];
+  $_SESSION['id_user'] = $pass[0]['id'];
 } else {
   echo 'Введите данные для входа';
 }

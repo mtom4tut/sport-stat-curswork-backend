@@ -8,3 +8,11 @@ CREATE TABLE users (
   mail varchar(60) NOT NULL UNIQUE,                         -- маил
   password varchar(70) NOT NULL                             -- пароль
 );
+
+-- список таблиц пользователя
+CREATE TABLE spreadsheets (
+  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,           -- id таблицы
+  id_user int(11) NOT NULL,                                 -- id пользователя
+  spreadsheet char(44) NOT NULL,                            -- ключ таблицы
+  FOREIGN KEY (id_user) REFERENCES users(id)
+);

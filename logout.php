@@ -2,4 +2,4 @@
 // Подключение бд
 include_once("./config/init.php");
 
-unset($_SESSION['user_id']);
+unset($_SESSION['id_user']);

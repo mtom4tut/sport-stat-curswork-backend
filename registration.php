@@ -39,7 +39,7 @@ if (isset($_POST['mail']) && isset($_POST['code']) && isset($_POST['password']) 
     unset($_SESSION['code']);
     unset($_SESSION['code_count']);
 
-    $_SESSION['user_id'] = $res;
+    $_SESSION['id_user'] = $res;
   }
 }
 exit();

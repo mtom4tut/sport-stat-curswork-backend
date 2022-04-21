@@ -16,3 +16,23 @@ CREATE TABLE spreadsheets (
   spreadsheet char(44) NOT NULL,                            -- ключ таблицы
   FOREIGN KEY (id_user) REFERENCES users(id)
 );
+
+-- итоговые данные
+CREATE TABLE totaldata (
+  id char(44) NOT NULL PRIMARY KEY,                         -- id таблицы
+  name_sportsmen int(11) NOT NULL,                          -- имя спортсмена
+  weight_sportsmen varchar(80) NOT NULL,                    -- имя спортсмена
+  age_sportsmen int(2) NOT NULL,                            -- возраст спортсмена
+  aerobic_p_legs float NOT NULL,                            -- Мощность, АэП, Вт ноги
+  aerobic_p_args float NOT NULL,                            -- Мощность, АэП, Вт руки
+  heart_rate_aerobic_legs float NOT NULL,                   -- ЧСС АэП, уд/мин ноги
+  heart_rate_aerobic_args float NOT NULL,                   -- ЧСС АэП, уд/мин руки
+  anaerobic_p_legs float NOT NULL,                          -- Мощность, АнП, Вт ноги
+  anaerobic_p_args float NOT NULL,                          -- Мощность, АнП, Вт руки
+  heart_rate_anaerobic_legs float NOT NULL,                 -- ЧСС АнП, уд/мин ноги
+  heart_rate_anaerobic_args float NOT NULL,                 -- ЧСС АнП, уд/мин руки
+  mpk_legs float NOT NULL,                                  -- Мощность МПК, Вт ноги
+  mpk_args float NOT NULL,                                  -- Мощность МПК, Вт руки
+  yoc_max_legs float NOT NULL,                              -- УОС max, мл ноги
+  yoc_max_args float NOT NULL                               -- УОС max, мл руки
+);

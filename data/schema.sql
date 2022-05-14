@@ -20,9 +20,10 @@ CREATE TABLE spreadsheets (
 -- итоговые данные
 CREATE TABLE totaldata (
   id char(44) NOT NULL PRIMARY KEY,                         -- id таблицы
-  name_sportsmen int(11) NOT NULL,                          -- имя спортсмена
-  weight_sportsmen varchar(80) NOT NULL,                    -- имя спортсмена
+  name_sportsmen varchar(50) NOT NULL,                      -- имя спортсмена
+  weight_sportsmen int(3) NOT NULL,                         -- вес спортсмена
   age_sportsmen int(2) NOT NULL,                            -- возраст спортсмена
+  date_passing DATE NOT NULL,                               -- дата прохождения
   aerobic_p_legs float NOT NULL,                            -- Мощность, АэП, Вт ноги
   aerobic_p_args float NOT NULL,                            -- Мощность, АэП, Вт руки
   heart_rate_aerobic_legs float NOT NULL,                   -- ЧСС АэП, уд/мин ноги
